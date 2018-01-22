@@ -1,0 +1,80 @@
+html, body{
+  height: 100%;
+}
+
+body{
+  background: url(img/background.jpg) center center no-repeat;
+  background-size: cover;
+}
+.snow{
+position: absolute;
+top:0;
+left: 0;
+right: 0;
+bottom: 0;
+overflow: hidden;
+}
+
+.snow_layer {
+  position: absolute;
+  left: -100px;
+  right: -100px;
+  animation: wind 4s cubic-bezier(.51,.01,.63,0.99) infinite alternate;
+  perspective: 100px;
+}
+
+.snow_layer::after{
+  content:'';
+  position: absolute;
+  top: 0;
+  left:0;
+  right: 0;
+  height: 2000px;
+  background:url(img/1.png);
+  animation: fallLight 10s linear infinite;
+  transform: translateZ(15px);
+}
+
+.snow_layer:nth-child(2){
+  animation-duration: 35s;
+}
+
+.snow_layer:nth-child(2)::after{
+  background: url(img/flou.png);
+  transform: translateZ(-50px);
+  animation-name: fallblur;
+  opacity: 0.5;
+}
+
+/*.snow_layer:nth-child(3){
+  transform: translateX(-50px);
+}
+
+.snow_layer:nth-child(3)::after{
+  background: url(img/bruit.png);
+  animation-duration: 27s;
+  opacity: 0.3;
+}*/
+
+@keyframes fall{
+  0% {
+    transform: translateY(-1000px);
+  }
+}
+@keyframes fallLight{
+  0% {
+      transform: translateY(-1000px)translateZ(15px);
+      
+  }
+}
+@keyframes fallblur{
+  0% {
+      transform: translateY(-1000px)translateZ(-20px);
+      
+  }
+}
+@keyframes wind{
+  to {
+    transform: translateX(50px);
+  }
+}
